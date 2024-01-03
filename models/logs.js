@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 
-const shipSchema = new mongoose.Schema({
+const logSchema = new mongoose.Schema({
     name: { type: String, require: true },
     color: { type: String, require: true },
     shipIsBroken: Boolean
 })
 
-const Ship = mongoose.model('Ship', shipSchema)
+const Log = mongoose.model('Log', logSchema)
 
-module.exports = Ship
+module.exports = Log
