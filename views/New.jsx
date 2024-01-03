@@ -4,12 +4,12 @@ function New(props) {
     return(
         <div>
             <h1>Captains Log</h1>
-            <a href="/logs"></a>
-            <form action='/fruits' method='POST'>
+            <a href="/logs">Go back to Index Page</a>
+            <form action='/logs' method='POST'>
                 Title: <input type='text' name='name' /> <br/>
                 Entry:  <input type='text' name='name' /> <br/>
                 Ship Broken?: <input type='checkbox' name='shipIsBroken' /> <br/>
-                <input type="submit" value="Submit" />
+                <input type='submit' value='Submit' />
             </form>
         </div>
     )

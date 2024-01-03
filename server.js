@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const jsxEngine = require('jsx-view-engine')
-// const Fruit = require('./models/fruit')
+const Ship = require('./models/ship')
 const PORT = process.env.PORT || 3003
 const app = express()
 
@@ -32,5 +32,23 @@ app.get('/new', (req, res) => {
 //delete
 //update
 //create
+app.post('/logs', async (req, res) => {
+    if(req.body.shipIsBroken === 'on'){
+        req.body.shipIsBroken = true
+    } 
+    else {
+        req.body.shipIsBroken = false
+    }
+    try {
+        const createdShip = await Ship.create(req.body)
+        res.redirect(`/logs/${createdShip._id}`)
+    } 
+    catch(error) {
+        res.status(400).send({message: error.message})
+    }
+
+    console.log(req.body)
+    res.send(req.body)
+})
 //edit
 //show
