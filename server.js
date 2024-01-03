@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const jsxEngine = require('jsx-view-engine')
-const Ship = require('./models/logs')
+const Log = require('./models/logs')
 const PORT = process.env.PORT || 3003
 const app = express()
 
@@ -25,10 +25,24 @@ app.listen(PORT, () => {
 
 
 //index
+app.get('/logs', async (req, res) => {
+    try {
+        const foundLogs = await Log.find({})
+        res.render('logs/Index', {
+            logs: foundLogs
+        })
+    }
+    catch(error) {
+        res.status(400).send({message: error.message})
+    }
+    // res.send('index')
+})
+
 //new
 app.get('/new', (req, res) => {
     res.render('new')
 })
+
 //delete
 //update
 //create
@@ -41,14 +55,14 @@ app.post('/logs', async (req, res) => {
     }
     try {
         const createdLog = await Log.create(req.body)
-        res.redirect(`/logs/${createdLog._id}`)
+         res.redirect(`/logs/${createdLog._id}`)
     } 
     catch(error) {
         res.status(400).send({message: error.message})
     }
-
+  
     console.log(req.body)
     res.send(req.body)
-})
+  })
 //edit
 //show
