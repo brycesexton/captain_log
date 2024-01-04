@@ -4,7 +4,7 @@ function New(props) {
     return(
         <div>
             <h1>Captains Log</h1>
-            <a href="/logs">link</a>
+            <a href="/logs">Go to index page.</a>
             <form action='/logs' method='POST'>
                 Title: <input type='text' name='title' /> <br/>
                 Entry: <textarea name="entry"></textarea> <br/>

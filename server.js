@@ -35,12 +35,12 @@ app.get('/logs', async (req, res) => {
     catch(error) {
         res.status(400).send({message: error.message})
     }
-    // res.send('index')
+    res.render('index')
 })
 
 //new
-app.get('/new', (req, res) => {
-    res.render('new')
+app.get('/logs/new', (req, res) => {
+    res.render('logs/New')
 })
 
 //delete
@@ -62,7 +62,17 @@ app.post('/logs', async (req, res) => {
     }
   
     console.log(req.body)
-    res.send(req.body)
   })
 //edit
 //show
+app.get('/logs/:id', async (req, res) => {
+    try {
+        const foundLog = await Log.findOne({_id: req.params.id})
+        res.render('logs/Show', {
+        log: foundLog
+        })
+    }
+    catch(error) {
+        res.status(400).send({ message: error.message })
+    }
+})
