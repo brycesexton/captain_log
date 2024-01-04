@@ -10,7 +10,7 @@ function Index(props) {
                     props.logs.map((log) => {
                         return(
                             <li key={log._id}>
-                                <a href ={`/logs/${log._id}`}>{log.title}</a> is {log.entry}
+                                <a href ={`/logs/${log._id}`}>{log.title}</a> is {log.entry} and {log.shipIsBroken ? 'ship is broken': 'ship is not broken'}
                             </li>
                         )
                     })

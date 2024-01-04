@@ -7,7 +7,7 @@ function New(props) {
             <a href="/logs">Go to index page.</a>
             <form action='/logs' method='POST'>
                 Title: <input type='text' name='title' /> <br/>
-                Entry: <textarea name="entry"></textarea> <br/>
+                Entry: <textarea name='entry'></textarea> <br/>
                 Ship Broken?: <input type='checkbox' name='shipIsBroken' /> <br/>
                 <input type='submit' value='Create Log' />
             </form>

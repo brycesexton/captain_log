@@ -44,6 +44,8 @@ app.get('/logs/new', (req, res) => {
 })
 
 //delete
+app.delete('/logs/:id')
+
 //update
 //create
 app.post('/logs', async (req, res) => {
