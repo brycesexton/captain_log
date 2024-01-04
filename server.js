@@ -58,6 +58,29 @@ app.delete('/logs/:id', async (req, res) => {
 })
 
 //update
+app.put('/logs/:id', async (req, res) => {
+    try {
+        const logId = req.params.id;
+        const updatedLogData = req.body;
+
+        if (updatedLogData.shipIsBroken === 'on') {
+            updatedLogData.shipIsBroken = true;
+        } 
+        else {
+            updatedLogData.shipIsBroken = false;
+        }
+        const updatedLog = await Log.findOneAndUpdate({ _id: logId }, updatedLogData, { new: true });
+
+        if (!updatedLog) {
+            return res.status(404).send({ message: 'Log not found' });
+        }
+        res.redirect(`/logs/${logId}`);
+    } catch (error) {
+        res.status(400).send({ message: error.message });
+    }
+});
+
+
 //create
 app.post('/logs', async (req, res) => {
     if(req.body.shipIsBroken === 'on'){
