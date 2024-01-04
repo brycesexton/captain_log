@@ -6,7 +6,7 @@ function Show(props){
             <h1>{props.log.name}</h1>
             <a href="/logs">Go back to Index Page</a>
             <p>
-                {props.log.title} {props.log.entry} {props.log.shipIsBroken? 'is broken': 'is not broken'}
+                {props.log.title} is a {props.log.entry} and {props.log.shipIsBroken? 'is broken': 'is not broken'}
             </p>
         </div>
     )
